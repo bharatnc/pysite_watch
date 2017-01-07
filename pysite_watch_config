@@ -1,9 +1,9 @@
-  - url: www.bharatnc.com/about
+  - url: http://www.bharatnc.com/about
     frequency: 120
     email: sample@gmail.com
-  - url: www.bharatnc.com/na
+  - url: http://www.bharatnc.com/na
     frequency: 120
     email: sample@gmail.com
-  - url: www.bharatnc.com/tags
+  - url: http://www.bharatnc.com/tags
     frequency: 120
     email: sample@gmail.com

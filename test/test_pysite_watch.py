@@ -17,7 +17,7 @@ class TestPysiteWatch(unittest.TestCase):
     def test_create_dict_item(self):
         psw = self.create_pysite_watch_object()
         self.assertTrue(psw.create_dict_item())
-        self.assertEquals(dict({0: {'url': 'www.bharatnc.com/about', 'frequency': 60, 'email': 'sample@gmail.com'}}),psw.create_dict_item())
+        self.assertEquals(dict({0: {'url': 'http://www.bharatnc.com/about', 'frequency': 60, 'email': 'sample@gmail.com'}}),psw.create_dict_item())
 
     #Test for inserting into  Redis queue
     @mock.patch.object(PysiteWatch, 'get_time')
@@ -44,7 +44,7 @@ class TestPysiteWatch(unittest.TestCase):
         r = redis.StrictRedis(host='localhost', port=6379, db=0)
         mock_method.return_value = self.get_time_sec("9:33:20")
         psw = self.create_pysite_watch_object()
-        self.assertEquals("['www.bharatnc.com/about,sample@gmail.com,34460.0,60']",psw.monitor_queue_helper())
+        self.assertEquals("['http://www.bharatnc.com/about,sample@gmail.com,34460.0,60']",psw.monitor_queue_helper())
 
     #Test for extracting entries
     @mock.patch.object(PysiteWatch, 'extract_entry')
@@ -58,7 +58,7 @@ class TestPysiteWatch(unittest.TestCase):
 
     #Test for get_status method
     def test_get_status(self):
-        test_url = "www.google.com"
+        test_url = "http://www.google.com"
         test_email = "sample@gmail.com"
         with mock.patch.object(PysiteWatch, 'get_status', return_value=True) as mock_method:
             psw = self.create_pysite_watch_object()

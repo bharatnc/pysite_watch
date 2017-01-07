@@ -92,7 +92,7 @@ class PysiteWatch():
     def get_status(self, e_mail, target_url):
         stat = ""
         try:
-            req = requests.get("http://" + str(target_url))
+            req = requests.get(str(target_url))
             rcode = req.status_code
             if rcode != 200:
                 self.send_alert_smtp(e_mail, target_url)
