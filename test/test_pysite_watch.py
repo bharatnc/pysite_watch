@@ -1,8 +1,5 @@
-import mock
-import redis
-import unittest
+import mock, redis, unittest
 from pysite_watch.pysite_watch import ConfigParser, PysiteWatch
-
 
 class TestConfigParser(unittest.TestCase):
     def test_parse_file(self):
@@ -13,7 +10,6 @@ class TestConfigParser(unittest.TestCase):
             cp1.parse_config_file()
         self.assertTrue("Error opening the file - ensure that the configuration file exists" in exc.exception)
 
-
 class TestPysiteWatch(unittest.TestCase):
     # Test for creating dict_item
     def test_create_dict_item(self):
@@ -22,7 +18,7 @@ class TestPysiteWatch(unittest.TestCase):
         self.assertEquals(
             dict({0: {'url': 'http://www.bharatnc.com/about', 'frequency': 60, 'email': 'sample@gmail.com'}}),
             psw.create_dict_item())
-
+        
     # Test for inserting into  Redis queue
     @mock.patch.object(PysiteWatch, 'get_time')
     def test_insert_data_into_queue(self, mock_method):
