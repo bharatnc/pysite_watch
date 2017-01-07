@@ -74,7 +74,6 @@ class PysiteWatch():
             r.zadd("time_based_sort", str(final_time), url)
             top = r.zrange("time_based_sort", 0, -1)[0]
             val = str(r.zrange("time_based_sort", 0, -1))
-
         else:
             val =  "Still Monitoring"
         return val
@@ -125,7 +124,7 @@ class PysiteWatch():
     def get_response_time(self, url):
         before = self.get_time()
         try:
-            req = requests.get("http://" + str(url))
+            req = requests.get(str(url))
             after = self.get_time()
             response_time = after - before
             print response_time
@@ -134,7 +133,7 @@ class PysiteWatch():
         return response_time
 
 if __name__ == "__main__":
-    
+
     def main():
         parser = argparse.ArgumentParser()
         parser.add_argument("smtp_server")
@@ -155,4 +154,3 @@ if __name__ == "__main__":
         r.create_dict_item()
         r.monitor()
     main()
-
