@@ -16,7 +16,7 @@ class ConfigParser:
 
 class PysiteWatch():
 
-    def __init__(self, entry_val,smtp_server,smtp_port, smtp_email,smtp_pwd, address, port):
+    def __init__(self, entry_val, smtp_server,smtp_port, smtp_email,smtp_pwd, address, port):
         self.entry = entry_val
         self.smtp_server = smtp_server
         self.smtp_port = smtp_port
